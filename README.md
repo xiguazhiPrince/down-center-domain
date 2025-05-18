@@ -5,6 +5,27 @@
 * 采用异步提交下载任务，并定时清除任务的方式实现
 * 采用DDD将核心逻辑抽取了domain模块
 
+# 架构设计
+
+
+有2个核心组件：任务处理器、watchDog
+
+##  任务处理器: TaskHandlerComponent
+1. 用于异步处理task任务, 目前是串行处理任务
+2. 把task任务绑定到instance，防止重复处理
+
+
+## watchDog: WatchDogComponent
+1. 对于超时未完成处理的任务（假如instance挂了），重置task的绑定和处理状态
+2. 给正在处理中的任务进行续期，防止处理时间过长导致task被重置
+
+
+<br>
+![image](https://github.com/user-attachments/assets/7f921747-23f4-49d7-af9b-75d800597ab4)
+
+时序流程图：
+![时序图](https://github.com/xiguazhiPrince/down-center-domain/blob/master/diagram.jpg "时序图")
+
 
 # 使用
 
@@ -141,26 +162,6 @@ public class DownCenterBeanConfig {
 2. 数据分页查询的通用工具
 
 
-
-# 架构设计
-
-
-有2个核心组件：任务处理器、watchDog
-
-##  任务处理器: TaskHandlerComponent
-1. 用于异步处理task任务, 目前是串行处理任务
-2. 把task任务绑定到instance，防止重复处理
-
-
-## watchDog: WatchDogComponent
-1. 对于超时未完成处理的任务（假如instance挂了），重置task的绑定和处理状态
-2. 给正在处理中的任务进行续期，防止处理时间过长导致task被重置
-
-
-<br>
-
-时序流程图：
-![时序图](https://github.com/xiguazhiPrince/down-center-domain/blob/master/diagram.jpg "时序图")
 
 
 # 后续规划

@@ -21,7 +21,8 @@
 
 
 <br>
-![image](https://github.com/user-attachments/assets/7f921747-23f4-49d7-af9b-75d800597ab4)
+
+![image](https://github.com/xiguazhiPrince/down-center-domain/blob/master/mind.png "img")
 
 时序流程图：
 ![时序图](https://github.com/xiguazhiPrince/down-center-domain/blob/master/diagram.jpg "时序图")
